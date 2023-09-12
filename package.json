@@ -2,13 +2,10 @@
   "name": "Patron-station",
   "scripts": {},
   "dependencies": {
-<<<<<<< HEAD
     "bcrypt": "^5.1.1",
-=======
     "@apollo/server": "^4.9.3",
     "express": "^4.18.2",
     "mongoose": "^7.5.1",
->>>>>>> 177cf75ae455c0f15630c3cbd275eab7f13c0a3f
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sequelize": "^6.33.0"
