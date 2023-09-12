@@ -97,8 +97,8 @@ To keep track of all your favorite online patrons with the option to donate to t
 ![GitHub Contributors Image](https://contrib.rocks/image?repo=SoloSolaire/Patron-Station)
 
 - [Jed Smith](https://github.com/shadowfre4k)
-- [Thompson Bryce](https://github.com/)
-- [Joaquin Godina](https://github.com/)
+- [Thompson Bryce](https://github.com/bryceedthompson)
+- [Joaquin Godina](https://github.com/joaquingodina0)
 - [Nathan Weekley](https://github.com/Nweekley84)
 
 ---
