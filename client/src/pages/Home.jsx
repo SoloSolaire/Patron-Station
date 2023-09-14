@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
 
-import { QUERY_PROFILES } from '../utils/queries';
+import { QUERY_USERS } from '../utils/queries';
 
 import ProjectList from '../components/ProjectList';
 
 const Home = () => {
-    const { loading, data } = useQuery(QUERY_PROFILES);
+    const { loading, data } = useQuery(QUERY_USERS);
     const projects = data?.projects || [];
   
     return (
