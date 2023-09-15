@@ -46,6 +46,9 @@ const resolvers = {
         addComment: async (parent, { comment_description }) => {
             return Comment.create({ comment_description });
         },
+        addProject: async (parent, { title, descprition }) => {
+            return Project.create({ title, descprition });
+        },
     }
 }
 

@@ -34,3 +34,14 @@ mutation addComment($comment_description: String) {
 }
 `;
 
+export const ADD_PROJECT = gql`
+mutation addProject($title: String!, $description: String!) {
+  addProject(title: $title, description: $description) {
+    _id
+    title
+    description
+    date_created
+  }
+}
+`;
+

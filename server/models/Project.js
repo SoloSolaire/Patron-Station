@@ -22,7 +22,7 @@ const projectSchema = new Schema({
     get: (timestamp) => dateFormat(timestamp),
   },
   user_id: {
-    type: DataTypes.INTEGER,
+    type: Number,
     references: {
       model: 'user',
       key: 'id',
