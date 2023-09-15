@@ -1,4 +1,4 @@
-const typeDef = `
+const typeDefs = `
 type User {
     _id: ID
     username: String
@@ -15,7 +15,7 @@ type Project {
 type Comment {
     _id: ID
     comment_description: String
-    date_created: Date
+    date_created: String
 }
 
 type Auth {
@@ -34,7 +34,8 @@ type Mutation {
     addUser(username: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
     addComment(comment_description: String): Comment
+    addProject(title: String, description: String): Project
 }
 `
 
-module.exports = typeDef;
+module.exports = typeDefs;

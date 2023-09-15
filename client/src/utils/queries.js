@@ -29,9 +29,20 @@ export const QUERY_ME = gql`
 
 export const QUERY_COMMENTS = gql`
   query getComments {
-    comment {
+    comments {
       _id
       comment_description
+      date_created
+    }
+  }
+  `;
+
+  export const QUERY_PROJECTS = gql`
+  query getProjects {
+    projects {
+      _id
+      title
+      description
       date_created
     }
   }

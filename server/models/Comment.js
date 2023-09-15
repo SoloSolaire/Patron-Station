@@ -18,14 +18,14 @@ const commentSchema = new Schema({
     get: (timestamp) => dateFormat(timestamp),
   },
   project_id: {
-    type: DataTypes.INTEGER,
+    type: Number,
     references: {
       model: 'blog',
       key: 'id',
     },
   },
   user_id: {
-    type: DataTypes.INTEGER,
+    type: Number,
     references: {
       model: 'user',
       key: 'id',
