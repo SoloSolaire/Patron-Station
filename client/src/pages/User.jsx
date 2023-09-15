@@ -41,9 +41,20 @@ const User = () => {
   return (
     <div>
       <h2 className="card-header">
-        {userId ? `${user.name}'s` : 'Your'} friends have endorsed these
-        projects
+      {userId ? `${user.name}'s` : 'Your'} friends have endorsed this
+        project
       </h2>
+
+      {user.comments?.length > 0 && (
+        <CommentList
+          comments={user.comments}
+          isLoggedInUser={!userId && true}
+        />
+      )}
+
+      <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
+        <CommentForm userId={user._id} />
+      </div>
     </div>
   );
 };
