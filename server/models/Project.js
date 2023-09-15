@@ -1,43 +1,35 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
-class Project extends Model {}
-
-Project.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    description: {
-      type: DataTypes.STRING,
-    },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
+const projectSchema = new Schema({
+  // id: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  //   primaryKey: true,
+  //   autoIncrement: true,
+  // },
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+  },
+  date_created: {
+    type: Date,
+    required: true,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
+  },
+  user_id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'user',
+      key: 'id',
     },
   },
-  {
-  sequelize,
-  timestamps: false,
-  freezeTableName: true,
-  underscored: true,
-  modelName: 'project',
-}
-);
+});
+
+const Project = model('Project', projectSchema);
 
 module.exports = Project;
