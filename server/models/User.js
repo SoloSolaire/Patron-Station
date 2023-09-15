@@ -1,51 +1,39 @@
-const { Model, DataTypes } = require('sequelize');
+const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const sequelize = require('../config/connection');
 
-class User extends Model {
-    checkPassword(loginPw) {
-      return bcrypt.compareSync(loginPw, this.password);
-    }
-}
+const userSchema = new Schema ({
+  // id: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  //   primaryKey: true,
+  //   autoIncrement: true,
+  // },
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 8,
+  },
+});
 
-User.init(
-    {
-      id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
-      },
-      username: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [8],
-        },
-      },
-    },
-    {
-        hooks: {
-          beforeCreate: async (newUserData) => {
-            newUserData.password = await bcrypt.hash(newUserData.password, 10);
-            return newUserData;
-          },
-          beforeUpdate: async (updatedUserData) => {
-            updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-            return updatedUserData;
-          },
-        },
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'user',
-      }
-    );
+userSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+userSchema.methods.isCorrectPassword = async function (password)
+{
+  return bcrypt.compare(password, this.password);
+};
+
+const User = model('User', userSchema);
 
 module.exports = User;

@@ -1,44 +1,38 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
-class Comments extends Model {}
+const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
-Comments.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    comment_description: {
-      type: DataTypes.STRING,
-    },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    project_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'blog',
-        key: 'id',
-      },
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
+const commentSchema = new Schema({
+  // id: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  //   primaryKey: true,
+  //   autoIncrement: true,
+  // },
+  comment_description: {
+    type: String,
+  },
+  date_created: {
+    type: Date,
+    required: true,
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
+  },
+  project_id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'blog',
+      key: 'id',
     },
   },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'comments',
-  }
-);
-module.exports = Comments;
+  user_id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: 'user',
+      key: 'id',
+    },
+  },
+});
+
+const Comment = model('Comment', commentSchema);
+
+module.exports = Comment;
