@@ -8,7 +8,7 @@ import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
 
-const Profile = () => {
+const User = () => {
   const { userId } = useParams();
 
   // If there is no `profileId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
@@ -23,7 +23,7 @@ const Profile = () => {
   const user = data?.me || data?.user || {};
 
   // Use React Router's `<Redirect />` component to redirect to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data._id === userId) {
+  if (Auth.loggedIn() && Auth.getUser().data._id === userId) {
     return <Navigate to="/me" />;
   }
 
@@ -47,18 +47,18 @@ const Profile = () => {
         projects
       </h2>
 
-      {profile.skills?.length > 0 && (
-        <SkillsList
+      {user.projects?.length > 0 && (
+        <ProjectList
           skills={profile.skills}
           isLoggedInUser={!profileId && true}
         />
       )}
 
       <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
-        <SkillForm profileId={profile._id} />
+        <ProjectForm profileId={profile._id} />
       </div>
     </div>
   );
 };
 
-export default Profile;
+export default User;
