@@ -16,9 +16,9 @@ const UserList = ({ users, title }) => {
                 <h4 className="card-header bg-dark text-light p-2 m-0">
                   {user.name} <br />
                   <span className="text-white" style={{ fontSize: '1rem' }}>
-                    currently has {user.projects ? user.projects.length : 0}{' '}
-                    endorsed project
-                    {user.projects && user.projects.length === 1 ? '' : 's'}
+                  currently has {user.comments ? user.comments.length : 0}{' '}
+                    patron
+                    {user.comments && user.comments.length === 1 ? '' : 's'}
                   </span>
                 </h4>
 
