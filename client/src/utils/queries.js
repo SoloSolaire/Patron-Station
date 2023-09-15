@@ -26,3 +26,13 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_COMMENTS = gql`
+  query getComments {
+    comment {
+      _id
+      comment_description
+      date_created
+    }
+  }
+  `;

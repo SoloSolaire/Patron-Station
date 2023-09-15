@@ -43,6 +43,9 @@ const resolvers = {
 
             return { token, user };
         },
+        addComment: async (parent, { comment_description }) => {
+            return Comment.create({ comment_description });
+        },
     }
 }
 

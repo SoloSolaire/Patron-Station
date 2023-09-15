@@ -1,19 +1,19 @@
 const typeDef = `
 type User {
-    id: ID
+    _id: ID
     username: String
     password: String
 }
 
 type Project {
-    id: ID
+    _id: ID
     title: String
     description: String
     date_created: String
 }
 
 type Comment {
-    id: ID
+    _id: ID
     comment_description: String
     date_created: Date
 }
@@ -33,6 +33,7 @@ type Query {
 type Mutation {
     addUser(username: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
+    addComment(comment_description: String): Comment
 }
 `
 
