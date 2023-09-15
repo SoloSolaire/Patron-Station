@@ -1,7 +1,8 @@
 const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-const secret = 'spookyscarysecret';
+const secret = process.env.AUTH_SECRET;
 const expiration = '2h';
 
 module.exports = {
@@ -10,8 +11,8 @@ module.exports = {
             code: 'UNAUTHENTICATED',
         },
     }),
-    signToken: function ({ username, id }) {
-        const payload = { username, id };
+    signToken: function ({ username, _id }) {
+        const payload = { username, _id };
         return jwt.sign({ data: payload }, secret, { expiration });
     },
 };
