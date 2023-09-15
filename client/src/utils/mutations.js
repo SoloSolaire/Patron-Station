@@ -24,3 +24,13 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const ADD_COMMENT = gql`
+mutation addComment($comment_description: String) {
+  addComment(comment_description: $comment_description) {
+    _id
+    comment_description
+    date_created
+  }
+}
+`;
+
