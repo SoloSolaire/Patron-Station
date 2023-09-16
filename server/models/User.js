@@ -8,6 +8,12 @@ const userSchema = new Schema ({
   //   primaryKey: true,
   //   autoIncrement: true,
   // },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    match: [/.+@.+\..+/, 'Must match an email address!']
+  },
   username: {
     type: String,
     required: true,
