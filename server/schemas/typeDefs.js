@@ -29,6 +29,7 @@ type Query {
     user: User
     projects: [Project]
     comments: [Comment]
+    me: User
 }
 
 type Mutation {
