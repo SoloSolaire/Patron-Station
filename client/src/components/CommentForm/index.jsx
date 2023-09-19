@@ -24,7 +24,8 @@ const CommentForm = ({ userId }) => {
       console.error(err);
     }
   };
-
+console.log(comment);
+console.log(userId);
   return (
     <div>
       <h4>Donate and a comment.</h4>

@@ -17,6 +17,12 @@ const resolvers = {
         comments: async () => {
             return Comment.find();
         },
+        me: async (parent, args, context) => {
+            if (context.user) {
+              return User.findOne({ _id: context.user._id });
+            }
+            throw AuthenticationError;
+          },
     },
 
     Mutation: {

@@ -1,6 +1,10 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
+import CommentForm from '../components/CommentForm';
+import CommentList from '../components/CommentsList'
+import ProjectDis from '../components/ProjectDis';
+import Project from '../components/ProjectForm';
 
 import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/queries';
 
@@ -29,7 +33,7 @@ const User = () => {
     return <div>Loading...</div>;
   }
 
-  if (!user?.name) {
+  if (!user?.username) {
     return (
       <h4>
         You need to be logged in to see your profile page. Use the navigation
@@ -44,6 +48,18 @@ const User = () => {
       {userId ? `${user.name}'s` : 'Your'} friends have endorsed this
         project
       </h2>
+
+      <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
+        <Project userId={user._id} />
+      </div>
+
+      {user.projects?.length > 0 && (
+        <ProjectDis
+          projects={user.projects}
+          isLoggedInUser={!userId && true}
+        />
+      )}
+
 
       {user.comments?.length > 0 && (
         <CommentList

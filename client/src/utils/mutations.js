@@ -34,6 +34,16 @@ mutation addComment($comment_description: String) {
 }
 `;
 
+export const REMOVE_COMMENT = gql`
+mutation addComment($comment_description: String) {
+  addComment(comment_description: $comment_description) {
+    _id
+    comment_description
+    date_created
+  }
+}
+`;
+
 export const ADD_PROJECT = gql`
 mutation addProject($title: String!, $description: String!) {
   addProject(title: $title, description: $description) {
@@ -45,3 +55,13 @@ mutation addProject($title: String!, $description: String!) {
 }
 `;
 
+export const REMOVE_PROJECT = gql`
+mutation addProject($title: String!, $description: String!) {
+  addProject(title: $title, description: $description) {
+    _id
+    title
+    description
+    date_created
+  }
+}
+`;
