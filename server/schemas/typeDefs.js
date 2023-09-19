@@ -36,6 +36,8 @@ type Mutation {
     login(email: String!, password: String!): Auth
     addComment(comment_description: String): Comment
     addProject(title: String, description: String): Project
+    removeUser: User
+    removeProject(projectId: ID!): Project
 }
 `
 

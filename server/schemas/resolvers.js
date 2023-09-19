@@ -49,6 +49,15 @@ const resolvers = {
         addProject: async (parent, { title, descprition }) => {
             return Project.create({ title, descprition });
         },
+        removeUser: async (parent, args, context) => {
+            if (context.user) {
+                return User.findOneAndDelete({ _id: context.user.id });
+            }
+            throw AuthenticationError;
+        },
+        removeProject: async (parent, { projectId }) => {
+            return Project.findOneAndDelete({ projectId });
+        }
     }
 }
 
