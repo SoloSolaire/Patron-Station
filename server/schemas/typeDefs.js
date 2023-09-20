@@ -28,7 +28,9 @@ type Query {
     users: [User]
     user: User
     projects: [Project]
+    project: Project
     comments: [Comment]
+    comment: Comment
     me: User
 }
 

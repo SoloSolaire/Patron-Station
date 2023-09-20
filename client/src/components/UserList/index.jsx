@@ -14,7 +14,7 @@ const UserList = ({ users, title }) => {
             <div key={user._id} className="col-12 col-xl-6">
               <div className="card mb-3">
                 <h4 className="card-header bg-dark text-light p-2 m-0">
-                  {user.name} <br />
+                  {user.username} <br />
                   <span className="text-white" style={{ fontSize: '1rem' }}>
                   currently has {user.comments ? user.comments.length : 0}{' '}
                     patron
