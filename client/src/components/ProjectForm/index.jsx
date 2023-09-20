@@ -7,7 +7,7 @@ import { QUERY_PROJECTS } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
-const Project = ({profile,}) => {
+const Project = () => {
     const [formState, setFormState] = useState({
         title: '',
         description: '',
@@ -25,7 +25,7 @@ const Project = ({profile,}) => {
         event.preventDefault();
 
         try {
-            const { data } = addProject({
+            const { data } = await addProject({
                 variables: { ...formState },
             });
 
@@ -41,7 +41,7 @@ const Project = ({profile,}) => {
     const handleChange = (event) => {
         const { name, value } = event.target;
 
-        if (name=== 'description' && value.length <= 280) {
+        if (name === 'description' && value.length <= 280) {
             setFormState({ ...formState, [name]: value });
         } else if (name !== 'description') {
             setFormState({ ...formState, [name]: value});

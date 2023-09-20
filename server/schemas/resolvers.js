@@ -13,10 +13,17 @@ const resolvers = {
         projects: async () => {
             return Project.find();
         },
+        project: async (parent, { projectId }) => {
+            return Project.findOne({ id: projectId });
+        },
 
         comments: async () => {
             return Comment.find();
         },
+        comment: async (parent, { commentId }) => {
+            return Comment.findOne({ id: commentId});
+        },
+        
         me: async (parent, args, context) => {
             if (context.user) {
               return User.findOne({ _id: context.user._id });
