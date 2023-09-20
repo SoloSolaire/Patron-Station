@@ -66,7 +66,7 @@
 
 - Laptop/Ipad/Desktop
 
-![Example screenshot 2](.assets/SS01.gif)
+![Example screenshot 1](./client/src/assets/SS01.gif)
 
 ---
 
