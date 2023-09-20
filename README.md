@@ -66,10 +66,7 @@
 
 - Laptop/Ipad/Desktop
 
-<!-- ![Example screenshot 1](./assets/images/01ss.gif) -->
-- Mobile
-
-<!-- ![Example screenshot 2](./assets/images/02ss.gif) -->
+![Example screenshot 2](.assets/SS01.gif)
 
 ---
 
@@ -81,14 +78,20 @@ To keep track of all your favorite online patrons with the option to donate to t
 
 ## Project Status
 
-![project status](https://img.shields.io/static/v1?label=Progress&message=10%&color=yellow)
+![project status](https://img.shields.io/static/v1?label=Progress&message=100%&color=green)
 
 
 ---
 
 ## Room for Improvement
 
-- TBD
+- Payment processing
+- Funding tracker/goals
+- Different tools for contributors and creators
+- A section for project updates
+- Getting components to display properly
+- Have donations displayed opn projerct page
+- Project ownder delete comments
 
 ---
 
@@ -120,6 +123,6 @@ This project is [MIT](https://opensource.org/licenses/MIT) licensed.
 
 <div align="center">
 
-[![github](./assets/images/githubcat.svg)](https://github.com)
+[![github](./assets/githubcat.svg)](https://github.com)
 
 </div>
